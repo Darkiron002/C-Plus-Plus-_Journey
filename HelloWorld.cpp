@@ -1,9 +1,15 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-int main (){
-    cout << "Hello world !"<< endl;
-    cout << "This is my first C++ program." << endl;
-    int x = 2, y = 4;
-    cout << x+y;
+int main(){
+    for(int i= 1; i <=5; i++){
+        for(int j= 1; j <= i; j++){
+            if(i % 2 != 0|| j %2 !=0){
+                cout<<"# "<< endl;
+            }
+            else{
+                cout << " ";
+            }
+        }cout<<" "<<endl;
+    } 
     return 0;
 }
