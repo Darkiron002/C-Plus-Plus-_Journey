@@ -27,7 +27,8 @@ void booksSeat(char arr[rows][col]){
 void blockbook(char arr[rows][col]){
     int r, statcol, count;
     cout << "Enter row, starting column, and number of seats to book (0-based): ";
-    cin >> r >> statcol >> count;if(r>= 0 && r< rows && statcol>=0 && statcol +count < col){
+    cin >> r >> statcol >> count;
+    if(r>= 0 && r< rows && statcol>=0 && statcol +count < col){
         bool canbook = true;
         for(int i = 0; i<count; i++){
             if(arr[r][statcol=+i]=1){
