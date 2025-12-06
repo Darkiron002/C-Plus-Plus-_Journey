@@ -1,39 +1,63 @@
-#include <iostream>
-#include<vector>
+#include<iostream>
 using namespace std;
-//The function of operation 
-void wavecall(int arr[][3],int mrow, int mcol){
-    for(int col = 0;col <mcol;col++){
-        if(col%2!=0){
-            for(int row=mrow-1;row >=0;row--){
-                cout<<arr[row][col]<<" ";
-            }
-        }
-        else{
-            for(int row = 0; row< mrow;row++ ){
-                cout<<arr[row][col]<<" ";
-            }
-        }
+//creating node
+class Node{
+    public:
+    int data; // data to input
+    Node *next;// pointer of the next data 
+    Node(int data){
+        this ->data= data; 
+        this ->next= NULL;
     }
+};
+
+//Inserting node at head 
+void InsertingHead(Node* &head,int data){
+    Node* temp = new Node(data);// creatning a new node as temp
+    temp->next= head; // shifting the position of first node with temp 
+    head = temp; // labeling temp as head 
 }
-//printing the array 
-void printarr(int arr[][3]){
-    cout<<"The matrix that you have entered is -"<<endl;
-    for(int i =0; i<3;i++){
-        for(int j=0;j<3;j++){
-            cout<<arr[i][j]<<" ";
-        }
-        cout<<endl;
+//Inserting node at the Middle 
+void InsertAtmiddle(Node* &head,int position, int data){
+    Node * temp = head;
+    int cnt = 1;
+    while(cnt <position -1){
+        temp= temp->next;
+        cnt++;
     }
+    Node* NodeToInsert = new Node(data);
+    NodeToInsert->next = temp ->next;
+    temp->next = NodeToInsert;
 }
-//The main function 
-int main() {
-    int arr[3][3];
-    for(int i=0;i<3;i++){
-        for(int j = 0; j<3;j++){
-            cin>>arr[i][j];
-        }
+
+//Inserting node at tail 
+void insertingTail(Node* &tail,int data){
+    Node *temp = new Node(data);
+    tail-> next = temp;
+    tail = temp;
+}
+
+//Printing node 
+void printinglist(Node*head){
+    Node * temp = head; // declearing teh head as temp 
+    while (temp != NULL)
+    {
+        cout<< temp->data<< " ";// printing the temp data
+        temp = temp ->next;// Moving the temp to the next temp which holds the data
     }
-    wavecall(arr,3,3);
+    cout <<endl;   
+}
+int main(){
+    Node* node1 = new Node(10);// making a new node 
+    Node* head = node1;// Declearing Head 
+    Node* tail = node1;//Declearing Tail
+    InsertingHead(head,13);
+    insertingTail(tail,90);
+    InsertAtmiddle(head,2, 44);
+    printinglist(head);
+
+    
+    
     return 0;
+
 }
